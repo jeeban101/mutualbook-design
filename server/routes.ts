@@ -70,13 +70,13 @@ async function sendOnboardingEmail(email: string, formLink: string, entry: any) 
   // For now, we'll just log the email content
   console.log(`
     ===== EMAIL SENT TO: ${email} =====
-    Subject: Complete Your Community Profile Setup
+    Subject: Welcome to MUTUAL BOOK - Complete Your Profile
     
     Hi there!
     
-    Thank you for starting your journey with our community platform! 
+    Welcome to MUTUAL BOOK - where students and professionals connect and grow together! 
     
-    Your Details:
+    Your Initial Details:
     - Type: ${entry.userType}
     - Communities: ${entry.communities.join(', ')}
     - Social Media: ${JSON.stringify(entry.socialMedia, null, 2)}
@@ -84,12 +84,12 @@ async function sendOnboardingEmail(email: string, formLink: string, entry: any) 
     Click the link below to complete your profile setup:
     ${formLink}
     
-    This link will take you to a detailed form where you can finish setting up your profile and start connecting with other ${entry.userType}s in your selected communities.
+    This personalized link will take you to a detailed form where you can finish setting up your MUTUAL BOOK profile and start connecting with other ${entry.userType}s in your selected communities.
     
-    Welcome to the community!
+    Get ready to unlock meaningful connections and opportunities!
     
     Best regards,
-    The Community Team
+    The MUTUAL BOOK Team
     =====================================
   `);
   

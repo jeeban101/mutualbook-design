@@ -17,8 +17,11 @@ export class MemStorage implements IStorage {
   async createOnboardingEntry(insertEntry: InsertOnboardingEntry): Promise<OnboardingEntry> {
     const id = this.currentId++;
     const entry: OnboardingEntry = {
-      ...insertEntry,
       id,
+      userType: insertEntry.userType,
+      communities: insertEntry.communities,
+      socialMedia: insertEntry.socialMedia,
+      email: insertEntry.email,
       createdAt: new Date(),
     };
     this.entries.set(id, entry);

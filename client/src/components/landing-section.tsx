@@ -19,20 +19,31 @@ export default function LandingSection({ onStartOnboarding }: LandingSectionProp
         
         {/* Hero Content */}
         <motion.div className="mb-12" variants={fadeInUp}>
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+          <motion.div className="mb-8" variants={fadeInUp}>
+            <h1 className="text-6xl md:text-8xl font-bold text-white mb-2 leading-tight">
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent animate-gradient bg-[length:400%_400%]">
+                MUTUAL
+              </span>{" "}
+              <span className="text-white">BOOK</span>
+            </h1>
+            <p className="text-lg text-gray-400 mb-6 font-medium tracking-wide">
+              Where Students & Professionals Connect
+            </p>
+          </motion.div>
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight"
             variants={fadeInUp}
           >
             Connect. Learn.{" "}
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent animate-gradient bg-[length:400%_400%]">
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
               Grow.
             </span>
-          </motion.h1>
+          </motion.h2>
           <motion.p 
             className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
             variants={fadeInUp}
           >
-            Join thousands of students and professionals building meaningful connections in our vibrant community platform.
+            Join thousands of students and professionals building meaningful connections through our mutual learning platform.
           </motion.p>
         </motion.div>
 
@@ -57,15 +68,16 @@ export default function LandingSection({ onStartOnboarding }: LandingSectionProp
 
         {/* Main CTA */}
         <motion.div variants={fadeInUp}>
-          <Button
-            onClick={onStartOnboarding}
-            className="group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-full transition-all duration-300 hover:from-purple-500 hover:to-pink-500 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-purple-500/50 animate-pulse-slow border-0"
-            {...scaleOnHover}
-          >
-            <span className="relative z-10">Start Your Journey</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
-            <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-          </Button>
+          <motion.div {...scaleOnHover}>
+            <Button
+              onClick={onStartOnboarding}
+              className="group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-full transition-all duration-300 hover:from-purple-500 hover:to-pink-500 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-purple-500/50 animate-pulse-slow border-0"
+            >
+              <span className="relative z-10">Start Your Journey</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
+              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </motion.div>
         </motion.div>
 
         {/* Scroll Indicator */}

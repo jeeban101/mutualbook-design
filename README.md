@@ -1,4 +1,4 @@
-# 📚 DesignSurvey – MutualBook Onboarding App
+# 📚 mutualbook-design(DesignSurvey) – MutualBook Onboarding App
 
 **mutualbook-design
 ** is the onboarding system for **MutualBook**, a purpose-driven networking platform connecting students and professionals based on shared goals and communities. This full-stack TypeScript project uses Supabase for data, Drizzle ORM for schema management, and Resend for secure, branded email delivery.

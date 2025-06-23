@@ -16,7 +16,9 @@ export const onboardingEntries = pgTable("onboarding_entries", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-export const insertOnboardingEntrySchema = createInsertSchema(onboardingEntries).omit({
+export const insertOnboardingEntrySchema = createInsertSchema(onboardingEntries, {
+  communities: z.array(z.string()).nonempty(),
+}).omit({
   id: true,
   createdAt: true,
 });
@@ -30,3 +32,23 @@ export const emailSchema = z.object({
 });
 
 export type EmailRequest = z.infer<typeof emailSchema>;
+
+export const profiles = pgTable("profiles", {
+  id: serial("id").primaryKey(),
+  onboardingId: serial("onboarding_id").notNull(),
+  fullName: text("full_name").notNull(),
+  bio: text("bio").notNull(),
+  personalityTraits: json("personality_traits").$type<string[]>().notNull(),
+  goals: text("goals").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertProfileSchema = createInsertSchema(profiles, {
+  personalityTraits: z.array(z.string()).nonempty(),
+}).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertProfile = z.infer<typeof insertProfileSchema>;
+export type Profile = typeof profiles.$inferSelect;

@@ -1,38 +1,29 @@
 import { onboardingEntries, type OnboardingEntry, type InsertOnboardingEntry } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   createOnboardingEntry(entry: InsertOnboardingEntry): Promise<OnboardingEntry>;
   getOnboardingEntryByEmail(email: string): Promise<OnboardingEntry | undefined>;
 }
 
-export class MemStorage implements IStorage {
-  private entries: Map<number, OnboardingEntry>;
-  private currentId: number;
-
-  constructor() {
-    this.entries = new Map();
-    this.currentId = 1;
-  }
-
+export class DrizzleStorage implements IStorage {
   async createOnboardingEntry(insertEntry: InsertOnboardingEntry): Promise<OnboardingEntry> {
-    const id = this.currentId++;
-    const entry: OnboardingEntry = {
-      id,
-      userType: insertEntry.userType,
-      communities: insertEntry.communities,
-      socialMedia: insertEntry.socialMedia,
-      email: insertEntry.email,
-      createdAt: new Date(),
-    };
-    this.entries.set(id, entry);
-    return entry;
+    const result = await db
+      .insert(onboardingEntries)
+      .values(insertEntry)
+      .returning();
+    return result[0];
   }
 
   async getOnboardingEntryByEmail(email: string): Promise<OnboardingEntry | undefined> {
-    return Array.from(this.entries.values()).find(
-      (entry) => entry.email === email,
-    );
+    const result = await db
+      .select()
+      .from(onboardingEntries)
+      .where(eq(onboardingEntries.email, email));
+    return result[0];
   }
 }
 
-export const storage = new MemStorage();
+
+export const storage = new DrizzleStorage();

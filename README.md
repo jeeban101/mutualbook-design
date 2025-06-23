@@ -39,4 +39,4 @@ npm run dev         # start the dev server
 - Database hosted on Supabase with pooled connection
 
 ## ✍️ Author
-Made with 💜 by [@yourusername](https://github.com/yourusername) – powered by MutualBook
+Made with 💜 by [@jeeban101](https://github.com/jeeban101) – powered by MutualBook
